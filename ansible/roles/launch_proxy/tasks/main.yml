@@ -8,5 +8,3 @@
       - "80:80"
     networks:
       - name: my-network
-    depends_on:
-      - my-api

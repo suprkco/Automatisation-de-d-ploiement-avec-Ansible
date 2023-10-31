@@ -7,3 +7,4 @@
     - launch_database
     - launch_app
     - launch_proxy
+    - launch_frontend

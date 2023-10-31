@@ -1,0 +1,10 @@
+---
+# tasks file for roles/launch_frontend
+- name: Run Frontend
+  docker_container:
+    name: my-frontend
+    image: suprkco/tp-devops-devops-front:latest
+    networks:
+      - name: my-network
+    depends_on:
+      - my-api

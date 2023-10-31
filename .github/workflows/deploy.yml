@@ -40,3 +40,10 @@ jobs:
           context: ./http-server
           tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-http-server:latest
           push: true
+      
+      - name: Build image and push devops-front
+        uses: docker/build-push-action@v3
+        with:
+          context: ./devops-front
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-devops-front:latest
+          push: true
