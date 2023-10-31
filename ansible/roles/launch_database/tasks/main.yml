@@ -1,0 +1,14 @@
+---
+# tasks file for roles/launch_database
+- name: Run Database
+  docker_container:
+    name: my-db
+    image: suprkco/tp-devops-database:lastest
+    networks:
+      - name: my-network
+    env:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pwd
+    volumes:
+      - db-volume:/var/lib/postgresql/data

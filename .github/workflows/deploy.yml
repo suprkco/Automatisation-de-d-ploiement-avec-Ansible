@@ -1,0 +1,42 @@
+name: CI devops 2023 - Deployment
+
+# Ce pipeline ne sera déclenché que lorsque le pipeline de test réussit
+on:
+  workflow_run:
+    workflows: ["CI devops 2023 - Test"]
+    branches: main
+    types:
+      - completed
+
+jobs:
+  build-and-push-docker-image:
+    # N'exécuter ce job que si le pipeline de test a réussi ET si on est sur la branche main
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2.5.0
+      
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push backend image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./simple-api
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:lastest
+          push: true
+
+      - name: Build image and push database
+        uses: docker/build-push-action@v3
+        with:
+          context: ./database
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-database:lastest
+          push: true
+
+      - name: Build image and push http-server
+        uses: docker/build-push-action@v3
+        with:
+          context: ./http-server
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-http-server:lastest
+          push: true

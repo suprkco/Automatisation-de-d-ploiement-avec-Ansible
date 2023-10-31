@@ -1,0 +1,12 @@
+---
+# tasks file for roles/launch_proxy
+- name: Run HTTPD
+  docker_container:
+    name: httpd
+    image: suprkco/tp-devops-http-server:latest
+    ports:
+      - "80:80"
+    networks:
+      - name: my-network
+    depends_on:
+      - my-api

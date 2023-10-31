@@ -1,0 +1,10 @@
+---
+# tasks file for roles/launch_app
+- name: Run API Backend
+  docker_container:
+    name: my-api
+    image: suprkco/tp-devops-simple-api:latest
+    networks:
+      - name: my-network
+    depends_on:
+      - my-db

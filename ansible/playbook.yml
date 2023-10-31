@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - install_docker
+    - create_network
+    - launch_database
+    - launch_app
+    - launch_proxy
