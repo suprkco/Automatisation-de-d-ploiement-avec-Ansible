@@ -24,19 +24,19 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./simple-api
-          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:lastest
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
           push: true
 
       - name: Build image and push database
         uses: docker/build-push-action@v3
         with:
           context: ./database
-          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-database:lastest
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-database:latest
           push: true
 
       - name: Build image and push http-server
         uses: docker/build-push-action@v3
         with:
           context: ./http-server
-          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-http-server:lastest
+          tags:  ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-http-server:latest
           push: true
