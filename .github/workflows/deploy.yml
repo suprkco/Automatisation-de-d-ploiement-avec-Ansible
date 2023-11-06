@@ -16,7 +16,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.5.0
-      
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install Ansible
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install ansible -y
+
+      - name: Run Ansible playbook
+        run: |
+          ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
+        
+
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
       
