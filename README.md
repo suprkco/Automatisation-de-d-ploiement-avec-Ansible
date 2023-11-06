@@ -1,4 +1,6 @@
-# TP3 - Ansible
+# Guide Pratique: Déploiement Automatisé avec Ansible et Docker
+
+Ce dépôt contient toutes les ressources et documentations nécessaires pour configurer et gérer une infrastructure de déploiement automatisé utilisant Ansible et Docker. Vous trouverez ici les détails des travaux pratiques (TP) effectués, répartis en trois parties principales: la mise en place d'une application répartie sur plusieurs niveaux avec Docker (Partie 1), l'intégration et le déploiement continus avec GitHub Actions (Partie 2), et la gestion et l'automatisation de la configuration avec Ansible (Partie 3). Chaque section vise à vous fournir les commandes, configurations et explications nécessaires pour reproduire et comprendre les étapes effectuées.
 
 ## Table des matières
 1. [Partie 1: 3-tiers application](#partie-1-3-tiers-application)
