@@ -4,4 +4,4 @@ all:
 children:
   prod:
     hosts:
-      kilian.codaccioni.takima.cloud
+      nom.prenom.server.com
