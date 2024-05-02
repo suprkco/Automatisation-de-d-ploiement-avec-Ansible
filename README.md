@@ -118,7 +118,7 @@ Tout cela est défini dans le fichier main.yml sous le répertoire .github/workf
     L'inventaire est défini dans le fichier `setup.yml` sous le répertoire `inventories`. Dans cet inventaire :
     - `ansible_user`: représente l'utilisateur avec lequel nous nous connectons à la machine distante, qui est `centos` dans notre cas.
     - `ansible_ssh_private_key_file`: c'est le chemin vers notre clé SSH privée, qui est `~/.ssh/id_rsa` depuis que nous l'avons déplacée.
-    - Sous le groupe `prod`, nous avons défini notre serveur, qui est `kilian.codaccioni.takima.cloud`.
+    - Sous le groupe `prod`, nous avons défini notre serveur.
     Commandes de base exécutées :
     - `Ping`: Nous avons utilisé la commande `ansible all -i inventories/setup.yml -m ping` pour vérifier la connectivité à notre serveur. La réponse `pong` indique que la connexion est réussie.
     - `Récupération des faits`: La commande `ansible all -i inventories/setup.yml -m setup -a "filter=ansible_distribution*"` a été utilisée pour récupérer des informations spécifiques sur la distribution du serveur. Il s'est avéré que notre serveur tourne sous CentOS 7.9.
